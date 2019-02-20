@@ -1,0 +1,229 @@
+
+<form name="joinusform" id="joinusform" method="post">
+<table class="table_Basic Text">
+<tbody>
+<tr>
+<th style="vertical-align: top;">PERSONAL DETAILS <span>*</span></th>
+<td>
+<div class="half_l ">
+<p class="bold">FIRST NAME <span>*</span></p>
+<p><input type="text" name="firstname" id="firstname" value="" minlength="3"></p></div>
+<div class="half_r ">
+<p class="bold">LAST NAME <span>*</span> </p>
+<p><input type="text" name="lastname" id="lastname" value="" minlength="3"></p></div>
+<div class="clearfix"></div>
+<div class="half_l ">
+<p class="bold">EMAIL <span>*</span></p>
+<p><input type="text" name="emailid" id="emailid" value=""></p></div>
+<div class="half_r ">
+<p class="bold">PHONE <span>*</span></p>
+<p><input type="text" name="phoneno" id="phoneno" value="" minlength="10" maxlength="15" ></p></div>
+<div class="clearfix"></div>
+<div class="half_l ">
+<p class="bold">MOBILE <span>*</span></p>
+<p><input type="text" name="mobileno" id="mobileno" value="" minlength="10" maxlength="15" ></p></div>
+</td>
+</tr>
+<tr>
+<th style="vertical-align: top;">COMPANY DETAILS <span>*</span></th>
+<td>
+<div class="half_f ">
+<p class="bold">EXISTING COMPANY NAME / BUSINESS NAME <span>*</span></p>
+<p><input type="text" name="companyname" id="companyname" value="" minlength="5"></p></div>
+<div class="clearfix"></div>
+<div class="half_l ">
+<p class="bold">EXPERIENCE IN <span>*</span></p>
+<p><select name="experiencein" id="experiencein">
+<option value="Agricultural">Agricultural </option>
+<option value="Automobile">Automobile</option>
+<option value="Tractor">Tractor</option>
+<option value="Other">Other</option>
+</select></div>
+<div class="half_r ">
+<p class="bold">NUMBER OF YEARS IN BUSINESS <span>*</span> </p>
+<p><input type="text" name="businessyear" id="businessyear" value="" minlength="1"></p></div>
+<div class="clearfix"></div>
+<div class="half_f ">
+<p class="bold">Which Tractor Brands Currently Representing  <span>*</span></p>
+<p><input type="text" name="tractorbrands" id="tractorbrands" value="" minlength="3"></p></div>
+<div class="clearfix"></div>
+<div class="half_l ">
+<p class="bold">From how any years  <span>*</span> </p>
+<p><input type="text" name="howyears" id="howyears" value="" minlength="1"></p></div>
+<div class="half_r ">
+<p class="bold">ADDRESS <span>*</span> </p>
+<p><input type="text" name="address" id="address" value="" minlength="5"></p></div>	
+<div class="clearfix"></div>	
+<div class="half_l ">
+<p class="bold">CITY <span>*</span></p>
+<p><input type="text" name="city" id="city" value="" minlength="3"></p></div>
+<div class="half_r ">
+<p class="bold">STATE/PROVINCE <span>*</span></p>
+<p><input type="text" name="state" id="state" value="" minlength="3"></p></div>
+<div class="clearfix"></div>
+<div class="half_l ">
+<p class="bold">COUNTRY <span>*</span></p>
+<p><input type="text" name="country" id="country" value="" minlength="3"></p></div>
+<div class="half_r ">
+<p class="bold">PIN CODE <span>*</span></p>
+<p><input type="text" name="pincode" id="pincode" value="" minlength="5"></p></div>
+</td>
+</tr>
+<tr>
+<th style="vertical-align: top;">OTHERS <span>*</span></th>
+<td>
+<div class="half_f">
+<p class="bold">Territory/ Location  Interested   <span>*</span></p>
+<p><input type="text" name="terrlocation" id="terrlocation" value="" minlength="3"></p></div>
+<div class="clearfix"></div>
+<div class="half_f">
+<p class="bold">Why do you want to be a Kubota dealer?  <span>*</span></p>
+<p><textarea name="othercomment" id="othercomment" minlength="10"></textarea></p>
+<input type="hidden" name="txt_st" required/></div>
+<div class="clearfix"></div>
+
+<div class="half_f">
+<div class="g-recaptcha" data-sitekey="6LeWFowUAAAAABvwzareLqPj0sp1PUw-vBomLxq9"></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+
+<div class="ta_c"><input type="submit" value="Submit" id="submit" name="formsubmit" class=" btn_submit Text"></div>
+<div style="color: rgb(105, 158, 47); font-size: 18px;display:none;margin-bottom: 20px; text-align: center;"  id="success"> Thank you ! we will contact you soon.</div> 
+<div style="color: red; font-size: 18px; display:none;margin-bottom: 20px;text-align: center;" id="error"> Error ! Please Try Again.</div>
+</form>
+<!-- /Heading-LV2__Wrap --></div>
+
+<script src="js/jquery.min.js"></script>
+<script src="../../../lskit_common/js/jquery_validation.js"></script>
+<script src="../../../lskit_common/js/field_validation.js"></script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
+
+<script>
+$(document).ready(function(){
+    $("#companyname,#firstname,#lastname,#tractorbrands,#city,#state,#country").keypress(function(event){
+        var inputValue = event.charCode;
+        if(!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)){
+            event.preventDefault();
+        }
+    });
+
+
+    //allow only numbers
+      $(document).ready (function () {
+          $("#phoneno,#mobileno,#businessyear,#howyears ").keypress (function (event) {
+              if ((event.which < 32) || (event.which > 126)) return true; 
+              return $.isNumeric ($(this).val () + String.fromCharCode (event.which));
+          });// numeric.keypress;
+          
+      });// document.ready;
+
+
+
+});
+
+
+  $('#joinusform').validate({
+        // initialize the plugin
+        rules: {
+            firstname:"required",
+            lastname:"required",
+            emailid: {
+                required: true,
+                email: true
+            },
+            phoneno:{
+              required: true,
+              number: true,
+              alphanumeric: false
+            },
+            mobileno:{
+              required: true,
+              number: true,
+              alphanumeric: false
+            },
+            companyname:"required",
+            businessyear:"required",
+            tractorbrands:"required",
+            howyears:"required",
+            address:"required",
+            city:"required",
+            state:"required",
+            country:"required",
+            pincode:"required",
+            terrlocation:"required",
+            othercomment:"required",   
+             },
+         messages: {
+               firstname: "Please enter your first name",
+               lastname: "Please enter your last name",
+               emailid: "Please enter a valid email address",
+               phoneno: "Please enter valid phone number",
+               mobileno: "Please enter valid mobile number",
+               companyname: "Please enter the company name or business name",
+               businessyear: "Please enter number of years in business",
+               tractorbrands: "Please enter the tractor brands",
+               howyears: "Please enter the years",
+               address: "Please enter the address",
+               city: "Please enter the city",
+               state: "Please enter the state",
+               country: "Please enter the country",
+               pincode: "Please enter the pincode",
+               terrlocation: "Please enter the location",
+               othercomment: "Please enter the want to be a kubota dealer",
+
+              
+     
+
+        },
+        submitHandler: function (form,event) { 
+    	event.preventDefault();
+
+		if($('#g-recaptcha-response').val()=='')
+		{
+		alert('Please Validate Your Captcha');
+		return false;
+		}
+
+         $('#submit').attr('disabled','disabled');
+         $.ajax({
+            url: 'enquiry.php',
+            type: 'post',
+            data:{'txt_st':'','firstname':$('#firstname').val(),'lastname':$('#lastname').val(),'emailid':$('#emailid').val(),'phoneno':$('#phoneno').val(),'mobileno':$('#mobileno').val(),'companyname':$('#companyname').val(),'experiencein':$('#experiencein').val(),'businessyear':$('#businessyear').val(),'tractorbrands':$('#tractorbrands').val(),'howyears':$('#howyears').val(),'address':$('#address').val(),'city':$('#city').val(),'state':$('#state').val(),'country':$('#country').val(),'pincode':$('#pincode').val(),'terrlocation':$('#terrlocation').val(),'othercomment':$('#othercomment').val()},
+            beforeSend: function()
+            {
+            $('#submit').val('loading...');
+            },
+            success: function(response){
+            if(response)
+            { 
+             // window.location.href = "http://kryptostech.com/O365/thankyou.html";
+             $('#success').show(); 
+             $('#submit').val('Submit');  
+             $('#submit').removeAttr('disabled','disabled');
+             $('#firstname,#lastname,#emailid,#phoneno,#mobileno,#companyname,#experiencein,#businessyear,#tractorbrands,#howyears,#address,#city,#state,#country,#pincode,#terrlocation,#othercomment').val('')    
+            }
+            else
+            {
+            $('#error').show(); 
+            $('#submit').val('Submit');  
+            $('#submit').removeAttr('disabled','disabled');
+            $('#firstname,#lastname,#emailid,#phoneno,#mobileno,#companyname,#experiencein,#businessyear,#tractorbrands,#howyears,#address,#city,#state,#country,#pincode,#terrlocation,#othercomment').val('')  
+            }
+            
+            },
+            
+        });
+
+         return false;
+        }
+       
+    });
+
+</script>
+
+
+</body>
+</html>
